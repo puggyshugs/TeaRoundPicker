@@ -1,8 +1,9 @@
 using TeaRoundPicker.Domain.Models;
+using TeaRoundPicker.Services.Cache.Interfaces;
 
-namespace TeaRoundPicker.Services;
+namespace TeaRoundPicker.Services.Cache;
 
-public class Cache
+public class Cache : ICache
 {
     private readonly Dictionary<string, Participant> _cachedParticipants = new();
 
