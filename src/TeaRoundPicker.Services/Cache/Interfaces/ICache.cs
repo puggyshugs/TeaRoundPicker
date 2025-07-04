@@ -8,4 +8,5 @@ public interface ICache
     Participant? GetParticipant(string key);
     List<Participant> GetAllParticipants();
     void SetParticipant(string key, Participant participant);
+    void SetMultipleParticipants(Dictionary<string, Participant> participants);
 }
