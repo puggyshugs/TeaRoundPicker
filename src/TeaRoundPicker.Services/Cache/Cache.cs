@@ -1,8 +1,9 @@
 using TeaRoundPicker.Domain.Models;
+using TeaRoundPicker.Services.Cache.Interfaces;
 
-namespace TeaRoundPicker.Services;
+namespace TeaRoundPicker.Services.Cache;
 
-public class Cache
+public class Cache : ICache
 {
     private readonly Dictionary<string, Participant> _cachedParticipants = new();
 
@@ -23,5 +24,13 @@ public class Cache
     public void SetParticipant(string key, Participant participant)
     {
         _cachedParticipants[key] = participant;
+    }
+
+    public void SetMultipleParticipants(Dictionary<string, Participant> participants)
+    {
+        foreach (var kvp in participants)
+        {
+            _cachedParticipants[kvp.Key] = kvp.Value;
+        }
     }
 }

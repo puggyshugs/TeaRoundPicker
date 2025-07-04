@@ -1,13 +1,14 @@
 ﻿using TeaRoundPicker.Domain.Enums;
 using TeaRoundPicker.Domain.Models;
+using TeaRoundPicker.Services.Cache.Interfaces;
 
 namespace TeaRoundPicker.Services;
 
 public class CacheService
 {
-    private readonly Cache _cache;
+    private readonly ICache _cache;
 
-    public CacheService(Cache cache)
+    public CacheService(ICache cache)
     {
         _cache = cache;
     }
@@ -39,5 +40,23 @@ public class CacheService
         _cache.SetParticipant(name, participant);
 
         return SuccessMessages.ParticipantCreatedSuccessfully.ToString();
+    }
+
+    public string CreateParticipants(List<string> names)
+    {
+        var participants = new Dictionary<string, Participant>();
+
+        foreach (var name in names)
+        {
+            var participant = new Participant
+            {
+                Name = name,
+                CreatedAt = DateTime.UtcNow
+            };
+            participants[name] = participant;
+        }
+        _cache.SetMultipleParticipants(participants);
+
+        return SuccessMessages.ParticipantsCreatedSuccessfully.ToString();
     }
 }
