@@ -1,10 +1,11 @@
 ﻿using TeaRoundPicker.Domain.Enums;
 using TeaRoundPicker.Domain.Models;
 using TeaRoundPicker.Services.Cache.Interfaces;
+using TeaRoundPicker.Services.Interfaces;
 
 namespace TeaRoundPicker.Services;
 
-public class CacheService
+public class CacheService : ICacheService
 {
     private readonly ICache _cache;
 
