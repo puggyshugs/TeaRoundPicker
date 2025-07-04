@@ -41,4 +41,22 @@ public class CacheService
 
         return SuccessMessages.ParticipantCreatedSuccessfully.ToString();
     }
+
+    public string CreateParticipants(List<string> names)
+    {
+        var participants = new Dictionary<string, Participant>();
+
+        foreach (var name in names)
+        {
+            var participant = new Participant
+            {
+                Name = name,
+                CreatedAt = DateTime.UtcNow
+            };
+            participants[name] = participant;
+        }
+        _cache.SetMultipleParticipants(participants);
+
+        return SuccessMessages.ParticipantsCreatedSuccessfully.ToString();
+    }
 }
