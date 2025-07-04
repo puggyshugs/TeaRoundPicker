@@ -26,6 +26,5 @@ namespace TeaRoundPicker.Api.Controller
             var selectedParticipant = FairnessHelper.PickRandom(participants);
             return Ok(selectedParticipant.Name);
         }
-
     }
 }
