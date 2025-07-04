@@ -25,4 +25,12 @@ public class Cache : ICache
     {
         _cachedParticipants[key] = participant;
     }
+
+    public void SetMultipleParticipants(Dictionary<string, Participant> participants)
+    {
+        foreach (var kvp in participants)
+        {
+            _cachedParticipants[kvp.Key] = kvp.Value;
+        }
+    }
 }
