@@ -5,5 +5,6 @@ public enum SuccessMessages
     ParticipantFoundSuccessfully,
     ParticipantCreatedSuccessfully,
     ParticipantsCreatedSuccessfully,
-    ParticipantNotFound
+    ParticipantNotFound,
+    DuplicateParticipantName
 }
