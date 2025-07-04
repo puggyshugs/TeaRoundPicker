@@ -24,7 +24,6 @@ public class CacheService : ICacheService
         var participant = _cache.GetParticipant(key) ?? new Participant
         {
             Name = string.Empty,
-            CreatedAt = DateTime.UtcNow,
             SuccessMessage = SuccessMessages.ParticipantNotFound.ToString()
         };
 
@@ -33,10 +32,11 @@ public class CacheService : ICacheService
 
     public string CreateParticipant(string name)
     {
+
         var participant = new Participant
         {
             Name = name,
-            CreatedAt = DateTime.UtcNow
+            SuccessMessage = SuccessMessages.ParticipantCreatedSuccessfully.ToString()
         };
         _cache.SetParticipant(name, participant);
 
@@ -46,18 +46,37 @@ public class CacheService : ICacheService
     public string CreateParticipants(List<string> names)
     {
         var participants = new Dictionary<string, Participant>();
+        if (!AreAllNamesUnique(names))
+        {
+            return SuccessMessages.DuplicateParticipantName.ToString();
+        }
 
         foreach (var name in names)
         {
             var participant = new Participant
             {
                 Name = name,
-                CreatedAt = DateTime.UtcNow
+                SuccessMessage = SuccessMessages.ParticipantsCreatedSuccessfully.ToString()
             };
             participants[name] = participant;
         }
         _cache.SetMultipleParticipants(participants);
 
         return SuccessMessages.ParticipantsCreatedSuccessfully.ToString();
+    }
+
+    private bool AreAllNamesUnique(List<string> names)
+    {
+        var existingNames = _cache.GetAllParticipants()
+                                  .Select(p => p.Name);
+
+        foreach (var name in names)
+        {
+            if (existingNames.Contains(name))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
