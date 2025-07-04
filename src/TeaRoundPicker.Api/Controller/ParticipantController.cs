@@ -39,6 +39,7 @@ namespace TeaRoundPicker.Api.Controller
                 return BadRequest("Participant name cannot be empty.");
 
             var result = _cacheService.CreateParticipant(name);
+
             return Ok(result);
         }
 
@@ -49,6 +50,9 @@ namespace TeaRoundPicker.Api.Controller
                 return BadRequest("Participant names cannot be empty.");
 
             var result = _cacheService.CreateParticipants(names);
+            if (result == Domain.Enums.SuccessMessages.DuplicateParticipantName.ToString())
+                return Conflict(result);
+
             return Ok(result);
         }
     }
