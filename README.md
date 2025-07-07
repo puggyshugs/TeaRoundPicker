@@ -15,7 +15,7 @@ TeaRoundPicker.Domain/       # Domain models, enums, and business rules
 
 ## Technologies Used
 
-- **.NET 8.0** - Runtime and framework
+- **.NET 9.0** - Runtime and framework
 - **ASP.NET Core** - Web API framework
 - **System.Security.Cryptography** - Secure random number generation
 - **In-Memory Caching** - Data persistence during runtime
