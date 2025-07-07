@@ -1,6 +1,7 @@
 # Tea Round Picker Backend
 
 A .NET Core Web API implementing a clean architecture pattern for managing tea round participants and selections.
+- [The client side React app can be found here](https://github.com/puggyshugs/WhoMakesTheTea)
 
 ## Architecture
 
