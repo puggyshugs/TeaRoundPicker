@@ -46,10 +46,6 @@ backend/
 |   |   └── Selection.cs
 │   └── Enums/
 │       └── SuccessMessages.cs
-└── TeaRoundPicker.Cache/
-    ├── Cache.cs
-    └── Interfaces/
-        └── ICache.cs
 ```
 
 ## Setup and Installation
