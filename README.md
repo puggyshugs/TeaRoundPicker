@@ -137,22 +137,6 @@ Provides cryptographically secure random selection using `System.Security.Crypto
 - **ParticipantController**: Manages CRUD operations for participants
 - **SelectionController**: Handles random participant selection
 
-## Configuration
-
-The application uses default ASP.NET Core configuration. Key settings:
-
-```json
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "AllowedHosts": "*"
-}
-```
-
 ## Error Handling
 
 The API implements comprehensive error handling:
